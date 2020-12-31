@@ -9,7 +9,7 @@
     "dev:prisma": "prisma generate --watch",
     "build": "npm run build:frourio && webpack --mode=production",
     "build:frourio": "npm run migrate:dev && prisma generate && frourio",
-    "migrate:dev": "prisma migrate dev --preview-feature",
+    "migrate:dev": "prisma migrate save --experimental && prisma migrate up --experimental",
     "migrate:reset": "prisma migrate reset --preview-feature",
     "start": "cross-env NODE_ENV=production node index.js"
   },
