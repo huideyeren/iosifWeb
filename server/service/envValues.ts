@@ -10,4 +10,12 @@ const BASE_PATH = process.env.BASE_PATH ?? ''
 const API_ORIGIN = process.env.API_ORIGIN ?? ''
 const SERVER_IP = process.env.SERVER_IP ?? ''
 
-export { JWT_SECRET, USER_ID, USER_PASS, SERVER_PORT, BASE_PATH, API_ORIGIN, SERVER_IP }
+export {
+  JWT_SECRET,
+  USER_ID,
+  USER_PASS,
+  SERVER_PORT,
+  BASE_PATH,
+  API_ORIGIN,
+  SERVER_IP
+}
