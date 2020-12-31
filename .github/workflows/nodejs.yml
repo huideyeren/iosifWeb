@@ -20,6 +20,7 @@ jobs:
       SERVER_PORT: 8080
       API_ORIGIN: http://localhost:8080
       BASE_PATH: /api
+      DATABASE_URL: postgres://test:postgres@localhost:5432/testdb
     steps:
       - uses: actions/checkout@v2
       - name: setup Node.js
