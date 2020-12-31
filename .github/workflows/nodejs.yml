@@ -39,6 +39,6 @@ jobs:
       - run: yarn install --cwd server
         if: steps.server-yarn-cache.outputs.cache-hit != 'true'
       - run: yarn lint
-      - run: echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test" > server/prisma/.env
+      # - run: echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test" > server/prisma/.env
       - run: yarn typecheck
       - run: yarn test
