@@ -1,10 +1,14 @@
 name: Node.js CI
 
-on: push
+on:
+  push:
+  schedule:
+    - cron: '55 2 * * *'
+    - cron: '5 12 * * *'
 
 jobs:
   test:
-    name: Test
+    name: Run Test
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -45,3 +49,18 @@ jobs:
       # - run: echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test" > server/prisma/.env
       - run: yarn typecheck
       - run: yarn test
+  vercel:
+    name: Deploy to Vercel
+    needs: test
+    if: ${{ ( github.event_name == "push" && github.ref == "main" ) || github.event_name == "schedule" }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_STATIC}}
+      - name: preview-url
+        run: |
+          echo ${{ steps.vercel-action.outputs.preview-url }}
