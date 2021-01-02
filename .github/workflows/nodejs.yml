@@ -5,11 +5,13 @@ on:
     branches:
       - '*'
   pull_request:
+    types:
+      - 'closed'
     branches: 
       - 'main'
   schedule:
     - cron: '50 2 * * *'
-    - cron: '30 12 * * *'
+    - cron: '50 14 * * *'
 
 jobs:
   test:
@@ -57,7 +59,7 @@ jobs:
   vercel:
     name: Deploy to Vercel
     needs: test
-    if: github.event.pull_request == true || github.event_name == 'schedule'
+    if: github.ref == 'refs/heads/main' || github.event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
