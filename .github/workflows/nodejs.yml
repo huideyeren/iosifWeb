@@ -57,6 +57,7 @@ jobs:
       # - run: echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test" > server/prisma/.env
       - run: yarn typecheck
       - run: yarn test
+  # hogehoge
   vercel:
     name: Deploy to Vercel
     needs: test
