@@ -12,6 +12,7 @@ on:
   schedule:
     - cron: '50 2 * * *'
     - cron: '50 14 * * *'
+    - cron: '10 4 * * *'
 
 jobs:
   test:
@@ -59,7 +60,7 @@ jobs:
   vercel:
     name: Deploy to Vercel
     needs: test
-    if: github.ref == 'refs/heads/main' || github.event_name == 'schedule'
+    if: github.ref == 'refs/heads/main' || github.event.schedule == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
