@@ -57,7 +57,7 @@ jobs:
   vercel:
     name: Deploy to Vercel
     needs: test
-    if: github.event.pull_request.merged == true || github.event.schedule == true
+    if: github.event.pull_request == true || github.event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
