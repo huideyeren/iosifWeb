@@ -12,5 +12,15 @@ services:
 
   db:
     image: postgres:13
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
     ports:
       - "5432:5432"
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:
+    driver: local
