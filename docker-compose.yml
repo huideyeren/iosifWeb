@@ -5,6 +5,7 @@ services:
     build: .
     ports:
       - "8080:8080"
+      - "3000:3000"
     depends_on:
       - db
     links:
@@ -16,6 +17,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB
+    container_name: "postgres"
     ports:
       - "5432:5432"
     volumes:
